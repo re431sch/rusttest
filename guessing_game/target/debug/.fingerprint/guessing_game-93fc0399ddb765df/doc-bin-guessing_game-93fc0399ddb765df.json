@@ -1,0 +1,1 @@
+{"rustc":7448330021436246629,"target":18130458775986739235,"profile":17879379437418342571,"local":{"variant":"Precalculated","fields":["13151967338.719514300s (C:\\Users\\Rene\\rusttest\\guessing_game\\src\\main.rs)"]},"features":"None","deps":[["rand v0.3.17",5217817934035918513],["rand v0.3.17",9505410937791004005]],"rustflags":[]}
