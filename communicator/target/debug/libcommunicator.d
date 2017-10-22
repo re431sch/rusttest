@@ -1,0 +1,1 @@
+C:\Users\Rene\rusttest\communicator\target\debug\libcommunicator.rlib: C:\Users\Rene\rusttest\communicator\src\network/mod.rs C:\Users\Rene\rusttest\communicator\src\network\server.rs C:\Users\Rene\rusttest\communicator\src\lib.rs C:\Users\Rene\rusttest\communicator\src\client.rs
