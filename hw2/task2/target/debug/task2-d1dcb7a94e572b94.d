@@ -1,0 +1,1 @@
+C:\Users\Rene\rusttest\hw2\task2\target\debug\task2-d1dcb7a94e572b94.exe: C:\Users\Rene\rusttest\hw2\task2\src\lib.rs C:\Users\Rene\rusttest\hw2\task2\src\main.rs C:\Users\Rene\rusttest\hw2\task2\tests\task2.rs
