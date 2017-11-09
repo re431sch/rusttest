@@ -2,9 +2,7 @@ extern crate procinfo;
 mod readproc;
 use readproc::*;
 
-
 fn main() {
-
     match self_pids() {
         Ok(a) => {
             //println!("PID: {}, PPiD: {}", a.0, a.1);
@@ -36,5 +34,4 @@ fn main() {
         Ok(c) => println!("Alle tasks: {}", c),
         Err(e) => println!("{}", e),
     }
-
 }
