@@ -1,6 +1,8 @@
 extern crate procinfo;
 mod readproc;
+mod pstree;
 use readproc::*;
+use pstree::*;
 
 fn main() {
     match self_pids() {

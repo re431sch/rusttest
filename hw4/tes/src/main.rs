@@ -7,6 +7,7 @@ fn main() {
         Ok(a) => {
             //println!("My PID: {}", a.0);
             //println!("My PPiD: {}", a.1);
+            get_next_pid(a.0);
             match get_pid_command(a.0) {
                 Ok(_) => {},
                 Err(e) => println!("{}", e),
@@ -35,6 +36,8 @@ fn main() {
         Ok(c) => println!("Total number of tasks: {}", c),
         Err(e) => println!("{}", e),
     }
+
+
 }
 //------------------------------------------------------------------------------------------------1
 fn self_pids() -> Result<(i32, i32), &'static str> {
@@ -97,5 +100,22 @@ fn get_ownprocess_mem() -> Result<(usize,usize,usize), &'static str> {
             Ok(a)
         }
         _ => Err("falsch"),
+    }
+}
+
+pub fn get_next_pid(pid: i32)  {
+    let mut accpid = pid;
+    // info über prozess mit übergebener pid
+    match stat(accpid) {
+        Ok(a) => {
+            // info über aktuellen prozess
+            let mut b = a.ppid;
+            let d = a.pid;
+            let mut c = a.command;
+            print!("{}({})---", c, d);
+            get_next_pid(b);
+
+        }
+        Err(_) => print!("falsch"),
     }
 }
