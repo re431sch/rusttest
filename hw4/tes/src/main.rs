@@ -7,7 +7,7 @@ fn main() {
         Ok(a) => {
             //println!("My PID: {}", a.0);
             //println!("My PPiD: {}", a.1);
-            get_next_pid(a.0);
+            get_next_pid(1);
             match get_pid_command(a.0) {
                 Ok(_) => {},
                 Err(e) => println!("{}", e),
@@ -103,19 +103,53 @@ fn get_ownprocess_mem() -> Result<(usize,usize,usize), &'static str> {
     }
 }
 
-pub fn get_next_pid(pid: i32)  {
-    let mut accpid = pid;
-    // info über prozess mit übergebener pid
-    match stat(accpid) {
-        Ok(a) => {
-            // info über aktuellen prozess
-            let mut b = a.ppid;
-            let d = a.pid;
-            let mut c = a.command;
-            print!("{}({})---", c, d);
-            get_next_pid(b);
-
+pub fn get_next_pid(bispid: i32) {
+    let mut vec = Vec::new();
+    let ne = stat_self().unwrap();
+    let mut newpid = ne.pid;
+    match stat(bispid) {
+        Ok(_) => {
+            match stat_self() {
+                Ok(a) => {
+                    vec.push(a.pid);
+                    //let mut newpid = a.ppid;
+                    while newpid != bispid {
+                        match stat(newpid) {
+                            Ok(b) => {
+                                vec.push(b.pid);
+                                newpid = b.ppid;
+                            }
+                            Err(_) => println!("error"),
+                        }
+                        /*if newpid == bispid {
+                            break;
+                        }*/
+                    }
+                    vec.push(newpid);
+                }
+                Err(_) => println!("error"),
+            }
         }
-        Err(_) => print!("falsch"),
+        Err(_) => print!("error"),
     }
+    ausgabe(vec);
+}
+
+pub fn ausgabe(mut vec: Vec<i32>) {
+    let a = vec.sort();
+    let mut len = vec.len() - 1;
+    for i in 0 .. len {
+        match stat(vec[i]) {
+            Ok(a) => {
+                if len == 1 {
+                    print!("{}({}) ", a.command, a.pid);
+                } else {
+                    print!("{}({})---", a.command, a.pid);
+                }
+                len = len - 1;
+            }
+            Err(_) => println!("error"),
+        }
+    }
+    println!("");
 }
