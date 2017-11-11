@@ -5,9 +5,37 @@ use readproc::*;
 use pstree::*;
 
 fn main() {
-    match self_pids() {
+
+    let args: Vec<String> = std::env::args().collect();
+
+    match args.len() {
+
+        2 => {
+            match args[1].parse::<i32>() {
+                Ok(a) => {
+                    match get_next_pid(a) {
+                        Ok(b) => println!("{}", b),
+                        Err(e) => {
+                            println!("{}",e);
+                            std::process::exit(1);
+                        }
+                    };
+                }
+                Err(e) => {
+                    println!("{}",e);
+                    std::process::exit(1);
+                }
+            }
+        }
+        _ => {
+            println!("falsch");
+            std::process::exit(1);
+        }
+    }
+    /*match self_pids() {
         Ok(a) => {
             //println!("PID: {}, PPiD: {}", a.0, a.1);
+            get_next_pid(1);
             match get_pid_command(a.0) {
                 Ok(_) => {},
                 Err(e) => println!("{}", e),
@@ -35,5 +63,5 @@ fn main() {
     match get_task_total() {
         Ok(c) => println!("Alle tasks: {}", c),
         Err(e) => println!("{}", e),
-    }
+    }*/
 }
