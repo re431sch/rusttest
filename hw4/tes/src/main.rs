@@ -40,10 +40,13 @@ fn main() {
 
 }
 //------------------------------------------------------------------------------------------------1
+/// funktion blubglabib
 fn self_pids() -> Result<(i32, i32), &'static str> {
+    /// matcht irgendwas
     match stat_self().ok() {
         Some(b) => {
             let a = (b.pid, b.ppid);
+            /// ok das ist ein test
             Ok(a)
         }
         _ => Err("falsch"),
