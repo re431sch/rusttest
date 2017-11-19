@@ -1,0 +1,1 @@
+/home/rene/rusttest/hw5/task1/target/debug/task1: /home/rene/rusttest/hw5/task1/src/zombie/mod.rs /home/rene/rusttest/hw5/task1/src/child/pstree.rs /home/rene/rusttest/hw5/task1/src/child/mod.rs /home/rene/rusttest/hw5/task1/src/main.rs

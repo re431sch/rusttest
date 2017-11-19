@@ -1,0 +1,1 @@
+{"rustc":11807999472408288889,"features":"[]","target":5820510429150971563,"profile":731176819336294830,"deps":[["nix v0.9.0",17841137007904934400],["procinfo v0.4.2",10352940877788566885]],"local":[{"MtimeBased":[[1510925121,465837746],"/home/rene/rusttest/hw5/tes2/target/debug/.fingerprint/tes2-228e58c0f3e44063/dep-bin-tes2-228e58c0f3e44063"]}],"rustflags":[]}
