@@ -1,0 +1,6 @@
+[package]
+name = "tes3"
+version = "0.1.0"
+authors = ["re431sch <rene-schink@web.de>"]
+
+[dependencies]
